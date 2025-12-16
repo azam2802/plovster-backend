@@ -1,6 +1,6 @@
 import express from 'express';
 import { createComplaint, getComplaints, updateComplaint, getAnalytics } from '../controllers/complaintController';
-import { protect, adminOnly } from '../middleware/authMiddleware';
+import { protect } from '../middleware/authMiddleware';
 
 const router = express.Router();
 
@@ -98,7 +98,7 @@ router.get('/', protect, getComplaints);
  *       404:
  *         description: The complaint was not found
  */
-router.patch('/:id', protect, adminOnly, updateComplaint);
+router.patch('/:id', protect, updateComplaint);
 
 /**
  * @swagger
@@ -112,6 +112,6 @@ router.patch('/:id', protect, adminOnly, updateComplaint);
  *       200:
  *         description: Analytics data
  */
-router.get('/analytics', protect, adminOnly, getAnalytics);
+router.get('/analytics', protect, getAnalytics);
 
 export default router;
