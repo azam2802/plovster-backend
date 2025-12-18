@@ -7,7 +7,7 @@ export interface IComplaint {
     contact?: string;
     rating?: number;
     adminComment?: string;
-    status: 'New' | 'In progress' | 'Solved';
+    status: 'New' | 'In progress' | 'Solved' | 'Rejected';
     createdAt: string; // ISO String
 }
 

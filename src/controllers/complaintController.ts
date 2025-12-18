@@ -44,11 +44,12 @@ export const createComplaint = async (req: Request, res: Response) => {
 // @access  Private (Admin/Manager)
 export const getComplaints = async (req: Request, res: Response) => {
     try {
-        const { branch, sort } = req.query;
+        const { status, branch, sort } = req.query;
 
         let query: FirebaseFirestore.Query = complaintsCollection;
 
         if (branch) query = query.where('branch', '==', branch);
+        if (status) query = query.where('status', '==', status);
 
         // Firestore requires composite indexes for where() + orderBy() on different fields.
         // To avoid this complexity for now, we'll sort in memory.
